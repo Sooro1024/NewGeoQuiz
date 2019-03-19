@@ -18,11 +18,19 @@ export default class Mainwindow extends Component {
       start: false,
       gameArray: null,
       dataForGame: null,
-      progress: 0
+      progress: 0,
+      result: 0
     };
   }
 
-
+  CheckTheAnswer = event => {
+    this.setState({progress: this.state.progress + 1})
+    if (this.state.gameArray[this.state.progress].name === event) {
+      this.setState({result: this.state.result + 1})
+    } else {
+      this.setState({result: this.state.result + 0})
+    }
+  }
 
   ChooseGameMod = event => {
     this.setState({ gameMod: event.target.value });
@@ -40,7 +48,7 @@ export default class Mainwindow extends Component {
   };
 
   HandleAppBarValeuChange = (event, value) => {
-    this.setState({ value, gameArray: null, dataForGame: null});
+    this.setState({ value, gameArray: null, dataForGame: null, progress: 0, result: 0});
     if (4 >value && value > 0){
       this.setState({openDialog: !this.state.openDialog, gameMod: `${value - 1}`})
     }
@@ -70,7 +78,7 @@ export default class Mainwindow extends Component {
             </div>
            </Slide>
            <Slide direction="up" in={this.state.value === 2} mountOnEnter unmountOnExit>
-            <GuessFlag gameArray={this.state.gameArray} dataForGame={this.state.dataForGame} progress={this.state.progress}/>
+            <GuessFlag gameArray={this.state.gameArray} dataForGame={this.state.dataForGame} progress={this.state.progress} CheckTheAnswer={this.CheckTheAnswer}/>
            </Slide>
            <Slide direction="up" in={this.state.value === 3} mountOnEnter unmountOnExit>
             <div>

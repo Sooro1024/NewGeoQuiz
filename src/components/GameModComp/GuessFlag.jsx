@@ -15,7 +15,7 @@ let AnswerBox = (dataForGame,gameArray,progress)=>{
 
 
 
-const GuessFlag = ({ gameArray, dataForGame, progress }) => {
+const GuessFlag = ({ gameArray, dataForGame, progress, CheckTheAnswer }) => {
   
   if (gameArray === null) {
     return <div></div>;
@@ -39,7 +39,9 @@ const GuessFlag = ({ gameArray, dataForGame, progress }) => {
         {progress}
       </div>
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-center', maxWidth: '80%'}}>
-      {AnswerBox(dataForGame,gameArray,progress).map(el => <Button variant='contained' color='primary' key={el.name}>{el.name}</Button>)}
+      {AnswerBox(dataForGame,gameArray,progress)
+        .sort((a,b)=> {return (0.5 - Math.random())})
+        .map(el => <Button onClick={()=>CheckTheAnswer(`${el.name}`)} variant='contained' color='primary' key={el.name}>{el.name}</Button>)}
       </div>
       </div>
       </Grow>
