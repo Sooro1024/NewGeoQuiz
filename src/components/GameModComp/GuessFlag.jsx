@@ -1,14 +1,16 @@
 import React from "react";
 import { Card, CardContent, CardMedia, CardHeader, Button, Grow } from "@material-ui/core";
 
-let random  = []
-let AnswerBox = (dataForGame)=>{
-  for (let i = 0 ; random.length < 3; i++) {
+let AnswerBox = (dataForGame,gameArray,progress)=>{
+  let arrOfAnswer = []
+  arrOfAnswer.push(gameArray[progress])
+  for (let i = 1 ; arrOfAnswer.length < 4; i++) {
     let el = Math.floor(Math.random() * (dataForGame.length - 0) + 0);
-    if(!random.some(e => e === el)){
-    random.push(el)
+    if(!arrOfAnswer.some(e => e.name === dataForGame[el].name)){
+    arrOfAnswer.push(dataForGame[el])
     }
   }
+  return arrOfAnswer;
 }
 
 
@@ -28,7 +30,7 @@ const GuessFlag = ({ gameArray, dataForGame, progress }) => {
         <CardContent>
           <CardMedia
             style={{ minHeight: "300px", /*borderColor: '#3f51b5', borderStyle:'solid'*/}}
-            image={`${gameArray[4].flag}`}
+            image={`${gameArray[progress].flag}`}
             />
         </CardContent>
       </Card>
@@ -37,10 +39,7 @@ const GuessFlag = ({ gameArray, dataForGame, progress }) => {
         {progress}
       </div>
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-center', maxWidth: '80%'}}>
-      <Button variant='contained' color='primary'>{dataForGame[random[0]].name}</Button>
-      <Button variant='contained' color='primary'>{dataForGame[random[1]].name}</Button>
-      <Button variant='contained' color='primary'>{dataForGame[random[2]].name}</Button>
-      <Button variant='contained' color='primary'>{dataForGame[random[3]].name}</Button>
+      {AnswerBox(dataForGame,gameArray,progress).map(el => <Button variant='contained' color='primary' key={el.name}>{el.name}</Button>)}
       </div>
       </div>
       </Grow>

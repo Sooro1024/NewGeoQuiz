@@ -4244,7 +4244,7 @@ const Data = [{
 "cioc":"COM"
 },
 {
-"name":"Democratic Republic of the Congo",
+"name":"Republic of the Congo",
 "topLevelDomain":[
 ".cg"
 ],
@@ -4332,7 +4332,7 @@ const Data = [{
 "cioc":"CGO"
 },
 {
-"name":"Congo (Democratic Republic of the)",
+"name":"Democratic Republic of the Congo",
 "topLevelDomain":[
 ".cd"
 ],
