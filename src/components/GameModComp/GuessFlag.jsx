@@ -17,7 +17,7 @@ const AnswerBox = (dataForGame, gameArray, progress) => {
 
 const styles = GuessFlagStyles
 
-const GuessFlag = ({ gameArray, dataForGame, progress, CheckTheAnswer }) => {
+const GuessFlag = ({ gameArray, dataForGame, progress, CheckTheAnswer, result }) => {
 
   const percent = Math.round(progress*6.6)
   if (gameArray === null) {
@@ -37,7 +37,7 @@ const GuessFlag = ({ gameArray, dataForGame, progress, CheckTheAnswer }) => {
             />
         </CardContent>
       </Card>
-      <CircularProgressbar percentage={percent} text={`${percent}%`} styles={styles.CircularProgressbar} />
+      <CircularProgressbar percentage={percent} text={`${result*1000}`} styles={styles.CircularProgressbar} />
       </div>
       <div style={styles.AnswerBoxWrapper}>
         <div style={styles.AnswerBox}>

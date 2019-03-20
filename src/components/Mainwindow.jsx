@@ -78,7 +78,7 @@ export default class Mainwindow extends Component {
             </div>
            </Slide>
            <Slide direction="up" in={this.state.value === 2} mountOnEnter unmountOnExit>
-            <GuessFlag gameArray={this.state.gameArray} dataForGame={this.state.dataForGame} progress={this.state.progress} CheckTheAnswer={this.CheckTheAnswer}/>
+            <GuessFlag gameArray={this.state.gameArray} dataForGame={this.state.dataForGame} progress={this.state.progress} CheckTheAnswer={this.CheckTheAnswer} result={this.state.result} />
            </Slide>
            <Slide direction="up" in={this.state.value === 3} mountOnEnter unmountOnExit>
             <div>
