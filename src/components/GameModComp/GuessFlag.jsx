@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, CardContent, CardMedia, CardHeader, Button, Grow } from "@material-ui/core";
+import { Card, CardContent, CardMedia, CardHeader, Button, Grow, Divider, LinearProgress } from "@material-ui/core";
 import CircularProgressbar from 'react-circular-progressbar';
-import GuessFlagStyles from './GuessFlagStyles'
+import GuessFlagStyles from './GuessFlagStyles';
 
 const AnswerBox = (dataForGame, gameArray, progress) => {
   let arrOfAnswer = [];
@@ -15,7 +15,7 @@ const AnswerBox = (dataForGame, gameArray, progress) => {
   return arrOfAnswer;
 };
 
-const styles = GuessFlagStyles
+const styles = GuessFlagStyles;
 
 const GuessFlag = ({ gameArray, dataForGame, progress, CheckTheAnswer, result }) => {
 
@@ -29,16 +29,18 @@ const GuessFlag = ({ gameArray, dataForGame, progress, CheckTheAnswer, result })
       <div>
       <div style={styles.cardAndProgressWrapper}>
       <Card style={{minWidth: '550px'}}>
-        <CardHeader title={`Which country flag is it ?`} />
-        <CardContent>
+        <CardHeader title='Which country flag is it ?' subheader={`Question ${progress}`} />
+        <CardContent style={{paddingTop: '0'}}>
           <CardMedia
             style={styles.CardMedia}
             image={`${gameArray[progress].flag}`}
             />
         </CardContent>
       </Card>
-      <CircularProgressbar percentage={percent} text={`${result*1000}`} styles={styles.CircularProgressbar} />
+      <CircularProgressbar percentage={percent} text={`${result*100000}`} styles={styles.CircularProgressbar} />
       </div>
+      {/* <Divider />
+      <LinearProgress variant="determinate" value={percent} /> */}
       <div style={styles.AnswerBoxWrapper}>
         <div style={styles.AnswerBox}>
         {AnswerBox(dataForGame,gameArray,progress)
