@@ -64,9 +64,9 @@ export default class Mainwindow extends Component {
         <MyAppBar value={this.state.value} HandleAppBarValeuChange={this.HandleAppBarValeuChange} />
         <div
           style={{
-            minHeight: "693px",
+            minHeight: "665px",
             paddingTop: "30px",
-            backgroundColor: "#F5F5F5"
+            backgroundColor: "#FAFAFA"
           }}
         >
            <Slide direction="up" in={this.state.value === 0} mountOnEnter unmountOnExit>

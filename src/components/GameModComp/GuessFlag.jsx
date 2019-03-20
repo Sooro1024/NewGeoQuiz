@@ -1,47 +1,50 @@
 import React from "react";
 import { Card, CardContent, CardMedia, CardHeader, Button, Grow } from "@material-ui/core";
+import CircularProgressbar from 'react-circular-progressbar';
+import GuessFlagStyles from './GuessFlagStyles'
 
-let AnswerBox = (dataForGame,gameArray,progress)=>{
-  let arrOfAnswer = []
-  arrOfAnswer.push(gameArray[progress])
-  for (let i = 1 ; arrOfAnswer.length < 4; i++) {
-    let el = Math.floor(Math.random() * (dataForGame.length - 0) + 0);
-    if(!arrOfAnswer.some(e => e.name === dataForGame[el].name)){
-    arrOfAnswer.push(dataForGame[el])
+const AnswerBox = (dataForGame, gameArray, progress) => {
+  let arrOfAnswer = [];
+  arrOfAnswer.push(gameArray[progress]);
+  for (let i = 1; arrOfAnswer.length < 4; i++) {
+    let el = Math.floor(Math.random() * dataForGame.length);
+    if (!arrOfAnswer.some(e => e.name === dataForGame[el].name)) {
+      arrOfAnswer.push(dataForGame[el]);
     }
   }
   return arrOfAnswer;
-}
+};
 
-
+const styles = GuessFlagStyles
 
 const GuessFlag = ({ gameArray, dataForGame, progress, CheckTheAnswer }) => {
-  
+
+  const percent = Math.round(progress*6.6)
   if (gameArray === null) {
     return <div></div>;
   } else {
     
     return (
       <Grow in={gameArray !== null}>
-      <div className="wrapperOfCard"  >
       <div>
-      <Card style={{maxWidth: '500px'}} /*raised={true}*/>
+      <div style={styles.cardAndProgressWrapper}>
+      <Card style={{minWidth: '550px'}}>
         <CardHeader title={`Which country flag is it ?`} />
         <CardContent>
           <CardMedia
-            style={{ minHeight: "300px", /*borderColor: '#3f51b5', borderStyle:'solid'*/}}
+            style={styles.CardMedia}
             image={`${gameArray[progress].flag}`}
             />
         </CardContent>
       </Card>
+      <CircularProgressbar percentage={percent} text={`${percent}%`} styles={styles.CircularProgressbar} />
       </div>
-      <div>
-        {progress}
-      </div>
-      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-center', maxWidth: '80%'}}>
-      {AnswerBox(dataForGame,gameArray,progress)
-        .sort((a,b)=> {return (0.5 - Math.random())})
-        .map(el => <Button onClick={()=>CheckTheAnswer(`${el.name}`)} variant='contained' color='primary' key={el.name}>{el.name}</Button>)}
+      <div style={styles.AnswerBoxWrapper}>
+        <div style={styles.AnswerBox}>
+        {AnswerBox(dataForGame,gameArray,progress)
+          .sort((a,b)=> {return (0.5 - Math.random())})
+          .map(el => <Button style={{marginBottom: '10px'}} onClick={()=>CheckTheAnswer(`${el.name}`)} variant='contained' color='primary' key={el.name}>{el.name}</Button>)}
+        </div>
       </div>
       </div>
       </Grow>
