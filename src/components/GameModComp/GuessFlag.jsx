@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, CardContent, CardMedia, CardHeader, Button, Grow, Divider, LinearProgress } from "@material-ui/core";
-import CircularProgressbar from 'react-circular-progressbar';
+import { Card, CardContent, CardMedia, CardHeader, Button, Grow, LinearProgress, Typography } from "@material-ui/core";
 import GuessFlagStyles from './GuessFlagStyles';
+import Timer from "./Timer";
 
 const AnswerBox = (dataForGame, gameArray, progress) => {
   let arrOfAnswer = [];
@@ -17,7 +17,7 @@ const AnswerBox = (dataForGame, gameArray, progress) => {
 
 const styles = GuessFlagStyles;
 
-const GuessFlag = ({ gameArray, dataForGame, progress, CheckTheAnswer, result }) => {
+const GuessFlag = ({ gameArray, dataForGame, progress, CheckTheAnswer, result, onTime }) => {
 
   const percent = Math.round(progress*6.6)
   if (gameArray === null) {
@@ -29,7 +29,7 @@ const GuessFlag = ({ gameArray, dataForGame, progress, CheckTheAnswer, result })
       <div>
       <div style={styles.cardAndProgressWrapper}>
       <Card style={{minWidth: '550px'}}>
-        <CardHeader title='Which country flag is it ?' subheader={`Question ${progress}`} />
+        <CardHeader title='Which country flag is it ?' subheader={`Question ${progress+1}`} />
         <CardContent style={{paddingTop: '0'}}>
           <CardMedia
             style={styles.CardMedia}
@@ -37,10 +37,10 @@ const GuessFlag = ({ gameArray, dataForGame, progress, CheckTheAnswer, result })
             />
         </CardContent>
       </Card>
-      <CircularProgressbar percentage={percent} text={`${result*100000}`} styles={styles.CircularProgressbar} />
+      {onTime && <Timer result={result} progress={progress} CheckTheAnswer={CheckTheAnswer} />}
+      {!onTime && <Typography variant='h3' color='primary'>{result}</Typography>}
       </div>
-      {/* <Divider />
-      <LinearProgress variant="determinate" value={percent} /> */}
+      <LinearProgress variant="determinate" value={percent} />
       <div style={styles.AnswerBoxWrapper}>
         <div style={styles.AnswerBox}>
         {AnswerBox(dataForGame,gameArray,progress)

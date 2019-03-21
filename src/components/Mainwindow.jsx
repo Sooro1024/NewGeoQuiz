@@ -12,8 +12,8 @@ export default class Mainwindow extends Component {
     this.state = {
       value: 0,
       openDialog: false,
-      gameMod: '0',
-      gameDiff: '0',
+      gameMod: "0",
+      gameDiff: "0",
       onTime: false,
       start: false,
       gameArray: null,
@@ -24,13 +24,13 @@ export default class Mainwindow extends Component {
   }
 
   CheckTheAnswer = event => {
-    this.setState({progress: this.state.progress + 1})
+    this.setState({ progress: this.state.progress + 1 });
     if (this.state.gameArray[this.state.progress].name === event) {
-      this.setState({result: this.state.result + 1})
+      this.setState({ result: this.state.result + 1 });
     } else {
-      this.setState({result: this.state.result + 0})
+      this.setState({ result: this.state.result + 0 });
     }
-  }
+  };
 
   ChooseGameMod = event => {
     this.setState({ gameMod: event.target.value });
@@ -42,26 +42,52 @@ export default class Mainwindow extends Component {
 
   HandleChanges = name => ev => {
     this.setState({ [name]: !this.state[name] });
-    if (name === 'start') {
-      this.setState({openDialog: !this.state.openDialog, value: (this.state.gameMod - 0 + 1)})
+    if (name === "start") {
+      this.setState({
+        openDialog: !this.state.openDialog,
+        value: this.state.gameMod - 0 + 1
+      });
     }
   };
 
   HandleAppBarValeuChange = (event, value) => {
-    this.setState({ value, gameArray: null, dataForGame: null, progress: 0, result: 0});
-    if (4 >value && value > 0){
-      this.setState({openDialog: !this.state.openDialog, gameMod: `${value - 1}`})
+    this.setState({
+      value,
+      gameArray: null,
+      dataForGame: null,
+      progress: 0,
+      result: 0
+    });
+    if (4 > value && value > 0) {
+      this.setState({
+        openDialog: !this.state.openDialog,
+        gameMod: `${value - 1}`
+      });
     }
   };
 
-  ChooseGameType = (gameArray,dataForGame) => {
-    this.setState({gameArray, dataForGame})
-  }
+  ChooseGameType = (gameArray, dataForGame) => {
+    this.setState({ gameArray, dataForGame });
+  };
 
   render() {
+    const {
+      value,
+      openDialog,
+      gameMod,
+      gameDiff,
+      onTime,
+      gameArray,
+      dataForGame,
+      progress,
+      result
+    } = this.state;
     return (
       <>
-        <MyAppBar value={this.state.value} HandleAppBarValeuChange={this.HandleAppBarValeuChange} />
+        <MyAppBar
+          value={value}
+          HandleAppBarValeuChange={this.HandleAppBarValeuChange}
+        />
         <div
           style={{
             minHeight: "665px",
@@ -69,39 +95,39 @@ export default class Mainwindow extends Component {
             backgroundColor: "#FAFAFA"
           }}
         >
-           <Slide direction="up" in={this.state.value === 0} mountOnEnter unmountOnExit>
+          <Slide direction="up" in={value === 0} mountOnEnter unmountOnExit>
             <ModIsUndefined HandleChanges={this.HandleChanges} />
-           </Slide>
-           <Slide direction="up" in={this.state.value === 1} mountOnEnter unmountOnExit>
-            <div>
-              guess world lorem1000
-            </div>
-           </Slide>
-           <Slide direction="up" in={this.state.value === 2} mountOnEnter unmountOnExit>
-            <GuessFlag gameArray={this.state.gameArray} dataForGame={this.state.dataForGame} progress={this.state.progress} CheckTheAnswer={this.CheckTheAnswer} result={this.state.result} />
-           </Slide>
-           <Slide direction="up" in={this.state.value === 3} mountOnEnter unmountOnExit>
-            <div>
-              guess capital
-            </div>
-           </Slide>
-           <Slide direction="up" in={this.state.value === 4} mountOnEnter unmountOnExit>
-            <div>
-              About us
-            </div>
-           </Slide>
-
+          </Slide>
+          <Slide direction="up" in={value === 1} mountOnEnter unmountOnExit>
+            <div>guess world lorem1000</div>
+          </Slide>
+          <Slide direction="up" in={value === 2} mountOnEnter unmountOnExit>
+            <GuessFlag
+              onTime={onTime}
+              gameArray={gameArray}
+              dataForGame={dataForGame}
+              progress={progress}
+              CheckTheAnswer={this.CheckTheAnswer}
+              result={result}
+            />
+          </Slide>
+          <Slide direction="up" in={value === 3} mountOnEnter unmountOnExit>
+            <div>guess capital</div>
+          </Slide>
+          <Slide direction="up" in={value === 4} mountOnEnter unmountOnExit>
+            <div>About us</div>
+          </Slide>
         </div>
         <ChooseAndPlay
-          openDialog={this.state.openDialog}
-          gameMod={this.state.gameMod}
-          onTime={this.state.onTime}
-          gameDiff={this.state.gameDiff}
+          openDialog={openDialog}
+          gameMod={gameMod}
+          onTime={onTime}
+          gameDiff={gameDiff}
           ChooseGameMod={this.ChooseGameMod}
           ChooseGameDiff={this.ChooseGameDiff}
           HandleChanges={this.HandleChanges}
           ChooseGameType={this.ChooseGameType}
-          AppBarvalue={this.state.value}
+          AppBarvalue={value}
         />
       </>
     );
