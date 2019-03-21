@@ -16,8 +16,8 @@ export default class Mainwindow extends Component {
       gameDiff: "0",
       onTime: false,
       start: false,
-      gameArray: null,
-      dataForGame: null,
+      gameArray: [],
+      dataForGame: [],
       progress: 0,
       result: 0
     };
@@ -53,8 +53,8 @@ export default class Mainwindow extends Component {
   HandleAppBarValeuChange = (event, value) => {
     this.setState({
       value,
-      gameArray: null,
-      dataForGame: null,
+      gameArray: [],
+      dataForGame: [],
       progress: 0,
       result: 0
     });
@@ -109,6 +109,7 @@ export default class Mainwindow extends Component {
               progress={progress}
               CheckTheAnswer={this.CheckTheAnswer}
               result={result}
+              gameMod={gameMod}
             />
           </Slide>
           <Slide direction="up" in={value === 3} mountOnEnter unmountOnExit>
