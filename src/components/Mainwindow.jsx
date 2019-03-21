@@ -4,6 +4,8 @@ import MyAppBar from "./MyAppBar";
 import GuessFlag from "./GameModComp/GuessFlag";
 import ModIsUndefined from "./GameModComp/ModIsUndefined";
 import Slide from "@material-ui/core/Slide";
+import GuessCapital from "./GameModComp/GuessCapital";
+import AboutUs from "./AboutUs";
 
 export default class Mainwindow extends Component {
   constructor(props) {
@@ -74,7 +76,8 @@ export default class Mainwindow extends Component {
       gameArray: [],
       dataForGame: [],
       progress: 0,
-      result: 0
+      result: 0,
+      onTime: false
     });
     if (4 > value && value > 0) {
       this.setState({
@@ -131,10 +134,18 @@ export default class Mainwindow extends Component {
             />
           </Slide>
           <Slide direction="up" in={value === 3} mountOnEnter unmountOnExit>
-            <div>guess capital</div>
+            <GuessCapital
+            onTime={onTime}
+            gameArray={gameArray}
+            dataForGame={dataForGame}
+            progress={progress}
+            CheckTheAnswer={this.CheckTheAnswer}
+            result={result}
+            gameMod={gameMod}
+            />
           </Slide>
           <Slide direction="up" in={value === 4} mountOnEnter unmountOnExit>
-            <div>About us</div>
+            <AboutUs />
           </Slide>
         </div>
         <ChooseAndPlay
