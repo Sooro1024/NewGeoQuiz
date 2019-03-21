@@ -23,12 +23,30 @@ export default class Mainwindow extends Component {
     };
   }
 
+  IncrementResult = () => {
+    if (this.state.onTime) {
+      if (this.state.gameDiff === '0') {
+        this.setState({ result: this.state.result + 150 })
+      } else if (this.state.gameDiff === '1') {
+        this.setState({ result: this.state.result + 300 })
+      } else {
+        this.setState({ result: this.state.result + 450 })
+      }
+    } else { 
+      if (this.state.gameDiff === '0') {
+        this.setState({ result: this.state.result + 100 })
+      } else if (this.state.gameDiff === '1') {
+        this.setState({ result: this.state.result + 200 })
+      } else {
+        this.setState({ result: this.state.result + 300 })
+      }
+    }
+  }
+
   CheckTheAnswer = event => {
     this.setState({ progress: this.state.progress + 1 });
     if (this.state.gameArray[this.state.progress].name === event) {
-      this.setState({ result: this.state.result + 1 });
-    } else {
-      this.setState({ result: this.state.result + 0 });
+      this.IncrementResult();
     }
   };
 

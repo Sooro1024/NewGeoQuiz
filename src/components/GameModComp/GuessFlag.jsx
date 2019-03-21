@@ -49,7 +49,7 @@ const GuessFlag = ({
           unmountOnExit
           mountOnEnter
         >
-          <ResultOfGame result={result * 1000} gameMod={gameMod} />
+          <ResultOfGame result={result} gameMod={gameMod} />
         </Slide>
         <Grow in={gameArray[progress] !== undefined} mountOnEnter unmountOnExit>
           <div>
