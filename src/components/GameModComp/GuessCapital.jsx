@@ -67,7 +67,7 @@ const GuessCapital = ({
                   subheader={`Question ${progress + 1}`}
                 />
                 <CardContent style={{ paddingTop: "0" }}>
-                  <GuessCapitalPhoto gameData={gameArray[progress]} styles={styles.CardMedia} progress={progress} />
+                  {gameArray[progress] !== undefined && <GuessCapitalPhoto gameData={gameArray[progress]} styles={styles.CardMedia} progress={progress} />}
                   {/* <CardMedia
                     style={styles.CardMedia}
                     image={

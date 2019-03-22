@@ -12,7 +12,7 @@ export default class GuessCapitalPhoto extends Component {
     }
 
     componentDidMount() {
-        fetch(`https://pixabay.com/api/?key=11890174-126592df6a4a3453318a1ae02&q=${this.props.gameData.capital}&image_type=photo&pretty=true&orientation=horizontal`)
+        fetch(`https://pixabay.com/api/?key=11890174-126592df6a4a3453318a1ae02&q=${this.props.gameData.name}&image_type=photo&pretty=true&orientation=horizontal`)
             .then(response => response.json())
             .then(response => this.setState({ photo: response }))
         console.log('mi angam')
@@ -20,7 +20,7 @@ export default class GuessCapitalPhoto extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.gameData.name !== this.props.gameData.name) {
-            fetch(`https://pixabay.com/api/?key=11890174-126592df6a4a3453318a1ae02&q=${this.props.gameData.capital}&image_type=photo&pretty=true&orientation=horizontal`)
+            fetch(`https://pixabay.com/api/?key=11890174-126592df6a4a3453318a1ae02&q=${this.props.gameData.name}&image_type=photo&pretty=true&orientation=horizontal`)
                 .then(response => response.json())
                 .then(response => this.setState({ photo: response }))
             console.log('erku angam')
@@ -38,7 +38,7 @@ export default class GuessCapitalPhoto extends Component {
             )
         } else {
             return (
-                <CardMedia style={this.props.styles} image={this.state.photo.hits[0].webformatURL} />
+                <CardMedia style={this.props.styles} image={this.state.photo.hits[Math.floor(Math.random() * 3)].webformatURL} />
             )
         }
   }
