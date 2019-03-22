@@ -6,6 +6,8 @@ import ModIsUndefined from "./GameModComp/ModIsUndefined";
 import Slide from "@material-ui/core/Slide";
 import GuessCapital from "./GameModComp/GuessCapital";
 import AboutUs from "./AboutUs";
+import GuessCountry from "./GameModComp/GuessCountry";
+import GuessMap from "./GameModComp/GuessMap";
 
 export default class Mainwindow extends Component {
   constructor(props) {
@@ -120,7 +122,14 @@ export default class Mainwindow extends Component {
             <ModIsUndefined HandleChanges={this.HandleChanges} />
           </Slide>
           <Slide direction="up" in={value === 1} mountOnEnter unmountOnExit>
-            <div>guess world lorem1000</div>
+            {/* <GuessCountry /> */}
+            <GuessMap onTime={onTime}
+            gameArray={gameArray}
+            dataForGame={dataForGame}
+            progress={progress}
+            CheckTheAnswer={this.CheckTheAnswer}
+            result={result}
+            gameMod={gameMod} />
           </Slide>
           <Slide direction="up" in={value === 2} mountOnEnter unmountOnExit>
             <GuessFlag
