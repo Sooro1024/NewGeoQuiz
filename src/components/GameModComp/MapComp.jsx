@@ -104,7 +104,7 @@ export default class MapComp extends Component {
             }}
           >
             <ZoomableGroup center={[0, 20]} disablePanning>
-              <Geographies geography={WorldMap}>
+              <Geographies geography={WorldMap} disableOptimization>
                 {(geographies, projection) =>
                   geographies.map(
                     (geography, i) =>
