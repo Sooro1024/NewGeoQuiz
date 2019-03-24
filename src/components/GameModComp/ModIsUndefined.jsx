@@ -1,5 +1,7 @@
 import React from 'react'
-import DescriptionBox from '../DescriptionBox';
+import DescriptionBox1 from '../DescriptionBox1';
+import DescriptionBox2 from '../DescriptionBox2';
+import DescriptionBox3 from '../DescriptionBox3';
 import Button from '@material-ui/core/Button';
 
 const ModIsUndefined = ({HandleChanges}) => {
@@ -23,9 +25,9 @@ const ModIsUndefined = ({HandleChanges}) => {
       </Button>
     </div>
     <div style={{ display: "flex", justifyContent: "space-around" }}>
-      <DescriptionBox />
-      <DescriptionBox />
-      <DescriptionBox />
+      <DescriptionBox1 />
+      <DescriptionBox2 />
+      <DescriptionBox3 />
     </div>
   </div>
   )

@@ -19,10 +19,10 @@ const AboutUs = () => {
             <Divider variant='middle'/>
             <Typography style={{marginBottom: '15px'}} variant='subtitle1'>Email: nersisyan0001@gmail.com <br/> Git: <a href='https://github.com/nersisyan0001'>www.github.com/nersisyan0001</a></Typography>
         <div style={{maxWidth: '600px', textAlign: 'center', margin: '0px auto'}}>
-            <Typography variant='h4'>We are grateful</Typography>
-            <Typography variant='headline'>On behalf of our entire team, we want to thank the Armenian Code Academy. And of course our tutors</Typography>
-            <Typography variant='h5'>Anush Hakobyan</Typography>
-            <Typography variant='h5'>Armen Vardanyan</Typography>
+            <Typography variant='h6'>We are grateful!</Typography>
+            <Typography variant='subtitle1'>On behalf of our entire team, we want to thank the Armenian Code Academy and of course our tutors</Typography>
+            <Typography variant='h6'>Anush Hakobyan,</Typography>
+            <Typography variant='h6'>Armen Vardanyan.</Typography>
         </div>
     </Paper>
   )
