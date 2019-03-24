@@ -51,9 +51,9 @@ const GuessMap = ({
                 <Grow in={gameArray[progress] !== undefined} mountOnEnter unmountOnExit>
                 <>
                 <div style={{display: 'flex'}}>
-                    <MapComp gameArray={gameArray} progress={progress} />
+                    {gameArray[progress] !== undefined && <MapComp gameArray={gameArray} progress={progress} />}
                     <div style={{display: 'flex', flexDirection: 'column'}}>
-                    {onTime && (
+                    {onTime && gameArray[progress] !== undefined && (
                 <Timer
                   result={result}
                   progress={progress}
@@ -89,7 +89,7 @@ const GuessMap = ({
                     </div>
               </div>
               </div>
-              <LinearProgress variant="determinate" value={percent} />
+              {gameArray[progress] !== undefined && <LinearProgress variant="determinate" color='secondary' value={percent} />}
               </>
                 </Grow>
             </>
