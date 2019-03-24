@@ -2,7 +2,6 @@ import React from "react";
 import {
   Card,
   CardContent,
-  // CardMedia,
   CardHeader,
   Button,
   Grow,
@@ -68,14 +67,6 @@ const GuessCapital = ({
                 />
                 <CardContent style={{ paddingTop: "0" }}>
                   {gameArray[progress] !== undefined && <GuessCapitalPhoto gameData={gameArray[progress]} styles={styles.CardMedia} progress={progress} />}
-                  {/* <CardMedia
-                    style={styles.CardMedia}
-                    image={
-                      gameArray[progress] !== undefined
-                        ? `${gameArray[progress].flag}`
-                        : "noFlag"
-                    }
-                  /> */}
                 </CardContent>
               </Card>
               {onTime && (

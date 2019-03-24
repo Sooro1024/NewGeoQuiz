@@ -1,8 +1,5 @@
 import React from 'react';
 import {
-    Card,
-    CardContent,
-    CardHeader,
     Button,
     Grow,
     LinearProgress,

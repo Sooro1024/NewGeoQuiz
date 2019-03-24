@@ -6,7 +6,7 @@ import {
   Geography
 } from "react-simple-maps";
 import { Card, CardHeader, CardContent } from "@material-ui/core";
-import WorldMap from "../../Data/qartez1.json";
+import WorldMap from "../../Data/qartez.json";
 
 const focusContry = {
   default: {

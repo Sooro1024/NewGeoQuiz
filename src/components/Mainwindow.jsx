@@ -6,7 +6,6 @@ import ModIsUndefined from "./GameModComp/ModIsUndefined";
 import Slide from "@material-ui/core/Slide";
 import GuessCapital from "./GameModComp/GuessCapital";
 import AboutUs from "./AboutUs";
-import GuessCountry from "./GameModComp/GuessCountry";
 import GuessMap from "./GameModComp/GuessMap";
 
 export default class Mainwindow extends Component {
@@ -122,7 +121,6 @@ export default class Mainwindow extends Component {
             <ModIsUndefined HandleChanges={this.HandleChanges} />
           </Slide>
           <Slide direction="up" in={value === 1} mountOnEnter unmountOnExit>
-            {/* <GuessCountry /> */}
             <GuessMap onTime={onTime}
             gameArray={gameArray}
             dataForGame={dataForGame}

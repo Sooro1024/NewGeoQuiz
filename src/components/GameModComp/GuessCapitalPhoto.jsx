@@ -15,7 +15,6 @@ export default class GuessCapitalPhoto extends Component {
         fetch(`https://pixabay.com/api/?key=11890174-126592df6a4a3453318a1ae02&q=${this.props.gameData.name}&image_type=photo&pretty=true&orientation=horizontal`)
             .then(response => response.json())
             .then(response => this.setState({ photo: response }))
-        console.log('mi angam')
     }
 
     componentDidUpdate(prevProps) {
@@ -23,7 +22,6 @@ export default class GuessCapitalPhoto extends Component {
             fetch(`https://pixabay.com/api/?key=11890174-126592df6a4a3453318a1ae02&q=${this.props.gameData.name}&image_type=photo&pretty=true&orientation=horizontal`)
                 .then(response => response.json())
                 .then(response => this.setState({ photo: response }))
-            console.log('erku angam')
         }
     }
 

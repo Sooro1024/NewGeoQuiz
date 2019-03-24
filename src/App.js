@@ -3,11 +3,7 @@ import Mainwindow from './components/Mainwindow';
 
 class App extends Component {
   render() {
-    return (
-      <>
-      <Mainwindow />
-      </>
-    );
+    return <Mainwindow />
   }
 }
 
