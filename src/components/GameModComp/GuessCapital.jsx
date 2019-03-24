@@ -2,7 +2,7 @@ import React from "react";
 import {
   Card,
   CardContent,
-  CardMedia,
+  // CardMedia,
   CardHeader,
   Button,
   Grow,
@@ -13,6 +13,7 @@ import {
 import GuessFlagStyles from "./GuessFlagStyles";
 import Timer from "./Timer";
 import ResultOfGame from "./ResultOfGame";
+import GuessCapitalPhoto from "./GuessCapitalPhoto";
 
 const AnswerBox = (dataForGame, gameArray, progress) => {
   let arrOfAnswer = [];
@@ -27,7 +28,7 @@ const AnswerBox = (dataForGame, gameArray, progress) => {
 };
 const styles = GuessFlagStyles;
 
-const GuessFlag = ({
+const GuessCapital = ({
   gameArray,
   dataForGame,
   progress,
@@ -56,18 +57,25 @@ const GuessFlag = ({
             <div style={styles.cardAndProgressWrapper}>
               <Card style={{ minWidth: "550px" }}>
                 <CardHeader
-                  title="Which country flag is it ?"
+                  title={
+                    gameArray[progress] !== undefined
+                      ? `Which country capital is ${
+                          gameArray[progress].capital
+                        } ?`
+                      : " "
+                  }
                   subheader={`Question ${progress + 1}`}
                 />
                 <CardContent style={{ paddingTop: "0" }}>
-                  <CardMedia
+                  {gameArray[progress] !== undefined && <GuessCapitalPhoto gameData={gameArray[progress]} styles={styles.CardMedia} progress={progress} />}
+                  {/* <CardMedia
                     style={styles.CardMedia}
                     image={
                       gameArray[progress] !== undefined
                         ? `${gameArray[progress].flag}`
                         : "noFlag"
                     }
-                  />
+                  /> */}
                 </CardContent>
               </Card>
               {onTime && (
@@ -115,4 +123,4 @@ const GuessFlag = ({
   }
 };
 
-export default GuessFlag;
+export default GuessCapital;

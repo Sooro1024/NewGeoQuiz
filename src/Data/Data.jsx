@@ -19063,7 +19063,7 @@ const Data = [{
 "callingCodes":[
 "1"
 ],
-"capital":"Washington, D.C.",
+"capital":"Washington",
 "altSpellings":[
 "US",
 "USA",
