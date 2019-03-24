@@ -17,11 +17,10 @@ export default class Timer extends Component {
     }, 250);
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    if (nextProps.progress !== this.props.progress) {
+  componentDidUpdate(nextProps, nextState) {
+    if (nextProps.progress !== this.props.progress ) {
       this.setState({ time: 60 });
-    }
-    if (this.state.time === 0) {
+    } else if (this.state.time === 0) {
       this.props.CheckTheAnswer();
     }
   }
