@@ -118,7 +118,7 @@ export default class Mainwindow extends Component {
           }}
         >
           <Slide direction="up" in={value === 0} mountOnEnter unmountOnExit>
-            <ModIsUndefined HandleChanges={this.HandleChanges} />
+            <ModIsUndefined HandleChanges={this.HandleChanges} HandleAppBarValeuChange={this.HandleAppBarValeuChange}/>
           </Slide>
           <Slide direction="up" in={value === 1} mountOnEnter unmountOnExit>
             <GuessMap onTime={onTime}

@@ -4,7 +4,7 @@ import DescriptionBox2 from '../DescriptionBox2';
 import DescriptionBox3 from '../DescriptionBox3';
 import Button from '@material-ui/core/Button';
 
-const ModIsUndefined = ({HandleChanges}) => {
+const ModIsUndefined = ({HandleChanges, HandleAppBarValeuChange}) => {
   return (
     <div className="wraperA">
     <div
@@ -25,9 +25,9 @@ const ModIsUndefined = ({HandleChanges}) => {
       </Button>
     </div>
     <div style={{ display: "flex", justifyContent: "space-around" }}>
-      <DescriptionBox1 />
-      <DescriptionBox2 />
-      <DescriptionBox3 />
+      <DescriptionBox1 HandleAppBarValeuChange={HandleAppBarValeuChange}/>
+      <DescriptionBox2 HandleAppBarValeuChange={HandleAppBarValeuChange}/>
+      <DescriptionBox3 HandleAppBarValeuChange={HandleAppBarValeuChange}/>
     </div>
   </div>
   )

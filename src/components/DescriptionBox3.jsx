@@ -3,9 +3,9 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import { Divider } from "@material-ui/core";
+import { Divider, CardActionArea } from "@material-ui/core";
 
-const DescriptionBox3 = () => {
+const DescriptionBox3 = ({HandleAppBarValeuChange}) => {
   return (
     <Card
       style={{
@@ -15,6 +15,7 @@ const DescriptionBox3 = () => {
         margin: "15px"
       }}
     >
+    <CardActionArea onClick={(ev)=>HandleAppBarValeuChange(ev,3)}>
       <CardContent>
         <CardMedia image={require("./img4.jpg")} style={{ height: "180px" }} />
         <Typography variant='h5'>Guess Flag</Typography>
@@ -26,6 +27,7 @@ const DescriptionBox3 = () => {
           depicting the flag and pick the country that it belongs to. Have fun!
         </Typography>
       </CardContent>
+      </CardActionArea>
     </Card>
   );
 };
