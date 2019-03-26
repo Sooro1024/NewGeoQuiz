@@ -26,8 +26,8 @@ const ModIsUndefined = ({HandleChanges, HandleAppBarValeuChange}) => {
     </div>
     <div style={{ display: "flex", justifyContent: "space-around" }}>
       <DescriptionBox1 HandleAppBarValeuChange={HandleAppBarValeuChange}/>
-      <DescriptionBox2 HandleAppBarValeuChange={HandleAppBarValeuChange}/>
       <DescriptionBox3 HandleAppBarValeuChange={HandleAppBarValeuChange}/>
+      <DescriptionBox2 HandleAppBarValeuChange={HandleAppBarValeuChange}/>
     </div>
   </div>
   )

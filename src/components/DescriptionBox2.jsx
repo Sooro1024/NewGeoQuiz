@@ -15,7 +15,7 @@ const DescriptionBox2 = ({HandleAppBarValeuChange}) => {
         margin: "15px"
       }}
     >
-    <CardActionArea onClick={(ev)=>HandleAppBarValeuChange(ev,2)}>
+    <CardActionArea onClick={(ev)=>HandleAppBarValeuChange(ev,3)}>
       <CardContent>
         <CardMedia image={require("./img2.jpg")} style={{ height: "180px" }} />
         <Typography variant='h5'>Guess Capital</Typography>
