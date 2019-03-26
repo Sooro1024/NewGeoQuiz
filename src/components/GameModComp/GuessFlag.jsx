@@ -13,7 +13,7 @@ import {
 import GuessFlagStyles from "./GuessFlagStyles";
 import Timer from "./Timer";
 import ResultOfGame from "./ResultOfGame";
-import {AnswerBox} from "./AnswerBox"
+import { AnswerBox } from "./AnswerBox";
 
 const styles = GuessFlagStyles;
 
@@ -29,18 +29,9 @@ const GuessFlag = ({
   const percent = Math.round(progress * 7.143);
   if (gameArray.length === 0) {
     return <div />;
-  } else {
+  } else if (gameArray[progress] !== undefined) {
     return (
       <>
-        <Slide
-          direction="down"
-          in={progress === 15}
-          timeout={{ enter: 800, exit: 200 }}
-          unmountOnExit
-          mountOnEnter
-        >
-          <ResultOfGame result={result} gameMod={gameMod} />
-        </Slide>
         <Grow in={gameArray[progress] !== undefined} mountOnEnter unmountOnExit>
           <div>
             <div style={styles.cardAndProgressWrapper}>
@@ -52,11 +43,7 @@ const GuessFlag = ({
                 <CardContent style={{ paddingTop: "0" }}>
                   <CardMedia
                     style={styles.CardMedia}
-                    image={
-                      gameArray[progress] !== undefined
-                        ? `${gameArray[progress].flag}`
-                        : "noFlag"
-                    }
+                    image={`${gameArray[progress].flag}`}
                   />
                 </CardContent>
               </Card>
@@ -80,27 +67,38 @@ const GuessFlag = ({
             <LinearProgress variant="determinate" value={percent} />
             <div style={styles.AnswerBoxWrapper}>
               <div style={styles.AnswerBox}>
-                {gameArray[progress] !== undefined &&
-                  AnswerBox(dataForGame, gameArray, progress)
-                    .sort((a, b) => {
-                      return 0.5 - Math.random();
-                    })
-                    .map(el => (
-                      <Button
-                        style={{ marginBottom: "10px" }}
-                        onClick={() => CheckTheAnswer(`${el.name}`)}
-                        variant="contained"
-                        color="primary"
-                        key={el.name}
-                      >
-                        {el.name}
-                      </Button>
-                    ))}
+                {AnswerBox(dataForGame, gameArray, progress)
+                  .sort((a, b) => {
+                    return 0.5 - Math.random();
+                  })
+                  .map(el => (
+                    <Button
+                      style={{ marginBottom: "10px" }}
+                      onClick={() => CheckTheAnswer(`${el.name}`)}
+                      variant="contained"
+                      color="primary"
+                      key={el.name}
+                    >
+                      {el.name}
+                    </Button>
+                  ))}
               </div>
             </div>
           </div>
         </Grow>
       </>
+    );
+  } else {
+    return (
+      <Slide
+        direction="down"
+        in={progress === 15}
+        timeout={{ enter: 800, exit: 200 }}
+        unmountOnExit
+        mountOnEnter
+      >
+        <ResultOfGame result={result} gameMod={gameMod} />
+      </Slide>
     );
   }
 };
