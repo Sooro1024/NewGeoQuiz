@@ -24,7 +24,8 @@ const GuessFlag = ({
   CheckTheAnswer,
   result,
   onTime,
-  gameMod
+  gameMod,
+  wrong
 }) => {
   const percent = Math.round(progress * 7.143);
   if (gameArray.length === 0) {
@@ -97,7 +98,7 @@ const GuessFlag = ({
         unmountOnExit
         mountOnEnter
       >
-        <ResultOfGame result={result} gameMod={gameMod} />
+        <ResultOfGame result={result} gameMod={gameMod} wrong={wrong}/>
       </Slide>
     );
   }
