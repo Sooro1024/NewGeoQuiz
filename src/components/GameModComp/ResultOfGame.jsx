@@ -1,7 +1,7 @@
 import React from "react";
 import { Paper, Typography } from "@material-ui/core";
 
-const ResultOfGame = ({ result, gameMod }) => {
+const ResultOfGame = ({ result, gameMod, wrong }) => {
   if (gameMod === "0") {
     gameMod = "guess country";
   } else if (gameMod === "1") {
@@ -20,7 +20,7 @@ const ResultOfGame = ({ result, gameMod }) => {
           You earned {result} points in {gameMod} mod.
         </Typography>
         <Typography variant="h4">
-          Improve your knowledge and try again.
+          Improve your knowledge about {wrong.map((el, index) => index === (wrong.length-1) ? el :el + ', ')} and try again.
         </Typography>
       </Paper>
     </div>
